@@ -111,7 +111,7 @@ const getInputValue = (ev) => {
 };
 
 const condicionalName = () => {
-  switch (month) {
+  switch (month.toLowerCase()) {
     case "enero":
       month = "Ianuarias";
       getDay29();
