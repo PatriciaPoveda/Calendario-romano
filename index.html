@@ -4,17 +4,29 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/main.css" />
     <title>Document</title>
   </head>
   <body>
-    <form action="" class="js-Button">
-      <label for="day">Día</label>
-      <input type="text" id="day" class="js-inputDay" required />
-      <label for="month">Mes</label>
-      <input type="text" id="month" class="js-inputMonth" required />
-      <input type="submit" value="Convertir" class="js-Button" />
-    </form>
-    <p class="js-text"></p>
+    <main>
+      <h1 class="title">Las fechas según el calendario romano</h1>
+      <div class="main">
+        <img src="./images/knight-151088_1280.png" alt="" class="main__img" />
+        <form action="" class="js-Button main__form">
+          <label for="day">Día</label>
+          <input type="text" id="day" class="js-inputDay" required />
+          <label for="month">Mes</label>
+          <input type="text" id="month" class="js-inputMonth" required />
+          <input type="submit" value="Convertir" class="js-Button" />
+        </form>
+        <p class="js-text"></p>
+        <img
+          src="./images/man-156549_1280.png"
+          alt=""
+          class="main__img consul"
+        />
+      </div>
+    </main>
     <script src="./js/main.js"></script>
   </body>
 </html>

@@ -1,13 +1,13 @@
 "use strict";
 
 const apiMonth31 = [
-  "Kalendas",
+  "Kalendis",
   "Ante Diem IV Nonas",
   "Ante Diem V Nonas",
   "Ante Diem IV Nonas",
   "Ante Diem III Nonas",
   "Pridie Nonas",
-  "NONAS",
+  "NONIS",
   "Ante Diem VIII Idus",
   "Ante Diem VII Idus",
   "Ante Diem VI Idus",
@@ -15,7 +15,7 @@ const apiMonth31 = [
   "Ante Diem IV Idus",
   "Ante Diem III Idus",
   "Pridie Idus",
-  "IDUS",
+  "IDIBUS",
   "Ante Diem XVII Kalendas",
   "Ante Diem XVI Kalendas",
   "Ante Diem XV Kalendas",
@@ -34,11 +34,11 @@ const apiMonth31 = [
   "Pridie Kalendas",
 ];
 const apiMonth31Bis = [
-  "Kalendas",
+  "Kalendis",
   "Ante Diem IV Nonas",
   "Ante Diem III Nonas",
   "Pridie Nonas",
-  "NONAS",
+  "NONIS",
   "Ante Diem VIII Idus",
   "Ante Diem VII Idus",
   "Ante Diem VI Idus",
@@ -46,7 +46,7 @@ const apiMonth31Bis = [
   "Ante Diem IV Idus",
   "Ante Diem III Idus",
   "Pridie Idus",
-  "IDUS",
+  "IDIBUS",
   "Ante Diem XIX Kalendas",
   "Ante Diem XVIII Kalendas",
   "Ante Diem XVII Kalendas",
@@ -67,11 +67,11 @@ const apiMonth31Bis = [
   "Pridie Kalendas",
 ];
 const apiMonth30 = [
-  "Kalendas",
+  "Kalendis",
   "Ante Diem IV Nonas",
   "Ante Diem III Nonas",
   "Pridie Nonas",
-  "NONAS",
+  "NONIS",
   "Ante Diem VIII Idus",
   "Ante Diem VII Idus",
   "Ante Diem VI Idus",
@@ -79,7 +79,7 @@ const apiMonth30 = [
   "Ante Diem IV Idus",
   "Ante Diem III Idus",
   "Pridie Idus",
-  "IDUS",
+  "IDIBUS",
   "Ante Diem XVIII Kalendas",
   "Ante Diem XVII Kalendas",
   "Ante Diem XVI Kalendas",
@@ -99,11 +99,11 @@ const apiMonth30 = [
   "Pridie Kalendas",
 ];
 const apiMonth28 = [
-  "Kalendas Februarias",
+  "Kalendis Februariis",
   "Ante Diem IV Nonas Februarias",
   "Ante Diem III Nonas Februarias",
   "Pridie Nonas Februarias",
-  "NONAS Februarias",
+  "NONIS Februariis",
   "Ante Diem VIII Idus Februarias",
   "Ante Diem VII Idus Februarias",
   "Ante Diem VI Idus Februarias",
@@ -111,7 +111,7 @@ const apiMonth28 = [
   "Ante Diem IV Idus Februarias",
   "Ante Diem III Idus Februarias",
   "Pridie Idus Februarias",
-  "IDUS Februarias",
+  "IDIBUS Februariis",
   "Ante Diem XVI Kalendas Martias",
   "Ante Diem XV Kalendas Martias",
   "Ante Diem XIV Kalendas Martias",
@@ -151,6 +151,20 @@ const latMonths = [
   "Novembres",
   "Decembres",
 ];
+const ablMonths = [
+  "Ianuariis",
+  "Februariis",
+  "Martiis",
+  "Aprilibus",
+  "Maiis",
+  "Iuniis",
+  "Quintilibus",
+  "Sextilibus",
+  "Septembribus",
+  "Octobribus",
+  "Novembribus",
+  "Decembribus",
+];
 const spaMonths = [
   "enero",
   "febrero",
@@ -182,7 +196,12 @@ const filterMonth = () => {
 const getDay = () => {
   const dayNumber = parseInt(day) - 1;
   if (
-    dayNumber <= 14 &&
+    (dayNumber === 14 || dayNumber === 0 || dayNumber === 6) &&
+    (month === 2 || month === 4 || month === 6 || month === 9)
+  ) {
+    date.innerHTML = `${apiMonth31[dayNumber]}` + " " + ` ${ablMonths[month]}`;
+  } else if (
+    dayNumber <= 13 &&
     (month === 2 || month === 4 || month === 6 || month === 9)
   ) {
     date.innerHTML = `${apiMonth31[dayNumber]}` + " " + ` ${latMonths[month]}`;
@@ -194,7 +213,13 @@ const getDay = () => {
     const resultMonth = month + 1;
     date.innerHTML =
       `${apiMonth31[dayNumber]}` + " " + ` ${latMonths[resultMonth]}`;
-  } else if (dayNumber <= 12 && (month === 0 || month === 7 || month === 11)) {
+  } else if (
+    (dayNumber === 12 || dayNumber === 0 || dayNumber === 4) &&
+    (month === 0 || month === 7 || month === 11)
+  ) {
+    date.innerHTML =
+      `${apiMonth31Bis[dayNumber]}` + " " + ` ${ablMonths[month]}`;
+  } else if (dayNumber <= 11 && (month === 0 || month === 7 || month === 11)) {
     date.innerHTML =
       `${apiMonth31Bis[dayNumber]}` + " " + ` ${latMonths[month]}`;
   } else if (
@@ -205,6 +230,11 @@ const getDay = () => {
     const resultMonth = month + 1;
     date.innerHTML =
       `${apiMonth31Bis[dayNumber]}` + " " + ` ${latMonths[resultMonth]}`;
+  } else if (
+    (dayNumber === 12 || dayNumber === 0 || dayNumber === 4) &&
+    (month === 3 || month === 5 || month === 8 || month === 10)
+  ) {
+    date.innerHTML = `${apiMonth30[dayNumber]}` + " " + ` ${ablMonths[month]}`;
   } else if (
     dayNumber <= 12 &&
     (month === 3 || month === 5 || month === 8 || month === 10)
