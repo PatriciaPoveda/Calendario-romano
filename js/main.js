@@ -129,14 +129,6 @@ const apiMonth28 = [
   "Pridie Kalendas Martias",
   "Bis VI ante kalendas Martias",
 ];
-const dayValue = document.querySelector(".js-inputDay");
-const monthValue = document.querySelector(".js-inputMonth");
-const btn = document.querySelector(".js-Button");
-const date = document.querySelector(".js-text");
-
-let day = "";
-let month = "";
-let htmlCode = "";
 const latMonths = [
   "Ianuarias",
   "Februarias",
@@ -179,6 +171,15 @@ const spaMonths = [
   "noviembre",
   "diciembre",
 ];
+const dayValue = document.querySelector(".js-inputDay");
+const monthValue = document.querySelector(".js-inputMonth");
+const btn = document.querySelector(".js-Button");
+const date = document.querySelector(".js-text");
+
+let day = "";
+let month = "";
+let htmlCode = "";
+
 const getInputValue = (ev) => {
   ev.preventDefault();
   day = dayValue.value;
@@ -256,3 +257,131 @@ const getDay = () => {
 };
 
 btn.addEventListener("submit", getInputValue);
+
+// Reset Button
+
+const resetBtn = document.querySelector(".js-btnReset");
+
+const clearSearch = () => {
+  monthValue.value = "";
+  dayValue.value = "";
+  date.innerHTML = "";
+};
+
+resetBtn.addEventListener("click", clearSearch);
+
+// Today
+const dateToday = document.querySelector(".js-dateToday");
+const today = new Date().getDate();
+const todayMonth = new Date().getMonth();
+console.log(today + " " + todayMonth);
+
+const getToday = () => {
+  const dayNumber = parseInt(today) - 1;
+  const month = parseInt(todayMonth);
+  if (
+    (dayNumber === 14 || dayNumber === 0 || dayNumber === 6) &&
+    (month === 2 || month === 4 || month === 6 || month === 9)
+  ) {
+    dateToday.innerHTML =
+      `${dateToday.innerHTML}` +
+      " " +
+      `${apiMonth31[dayNumber]}` +
+      " " +
+      ` ${ablMonths[month]}`;
+  } else if (
+    dayNumber <= 13 &&
+    (month === 2 || month === 4 || month === 6 || month === 9)
+  ) {
+    dateToday.innerHTML =
+      `${dateToday.innerHTML}` +
+      " " +
+      `${apiMonth31[dayNumber]}` +
+      " " +
+      ` ${latMonths[month]}`;
+  } else if (
+    dayNumber >= 15 &&
+    dayNumber <= 30 &&
+    (month === 2 || month === 4 || month === 6 || month === 9)
+  ) {
+    const resultMonth = month + 1;
+    dateToday.innerHTML =
+      `${dateToday.innerHTML}` +
+      " " +
+      `${dateToday.innerHTML}` +
+      " " +
+      `${apiMonth31[dayNumber]}` +
+      " " +
+      ` ${latMonths[resultMonth]}`;
+  } else if (
+    (dayNumber === 12 || dayNumber === 0 || dayNumber === 4) &&
+    (month === 0 || month === 7 || month === 11)
+  ) {
+    dateToday.innerHTML =
+      `${dateToday.innerHTML}` +
+      " " +
+      `${apiMonth31Bis[dayNumber]}` +
+      " " +
+      ` ${ablMonths[month]}`;
+  } else if (dayNumber <= 11 && (month === 0 || month === 7 || month === 11)) {
+    dateToday.innerHTML =
+      `${dateToday.innerHTML}` +
+      " " +
+      `${apiMonth31Bis[dayNumber]}` +
+      " " +
+      ` ${latMonths[month]}`;
+  } else if (
+    dayNumber >= 13 &&
+    dayNumber <= 30 &&
+    (month === 0 || month === 7 || month === 11)
+  ) {
+    const resultMonth = month + 1;
+    dateToday.innerHTML =
+      `${dateToday.innerHTML}` +
+      " " +
+      `${apiMonth31Bis[dayNumber]}` +
+      " " +
+      ` ${latMonths[resultMonth]}`;
+  } else if (
+    (dayNumber === 12 || dayNumber === 0 || dayNumber === 4) &&
+    (month === 3 || month === 5 || month === 8 || month === 10)
+  ) {
+    dateToday.innerHTML =
+      `${dateToday.innerHTML}` +
+      " " +
+      `${apiMonth30[dayNumber]}` +
+      " " +
+      ` ${ablMonths[month]}`;
+  } else if (
+    dayNumber <= 12 &&
+    (month === 3 || month === 5 || month === 8 || month === 10)
+  ) {
+    dateToday.innerHTML =
+      `${dateToday.innerHTML}` +
+      " " +
+      `${apiMonth30[dayNumber]}` +
+      " " +
+      ` ${latMonths[month]}`;
+  } else if (
+    dayNumber >= 13 &&
+    dayNumber <= 29 &&
+    (month === 3 || month === 5 || month === 8 || month === 10)
+  ) {
+    const resultMonth = month + 1;
+    dateToday.innerHTML =
+      `${dateToday.innerHTML}` +
+      " " +
+      `${apiMonth30[dayNumber]}` +
+      " " +
+      ` ${latMonths[resultMonth]}`;
+  } else if (month === 1 && dayNumber <= 28) {
+    dateToday.innerHTML =
+      `${dateToday.innerHTML}` + " " + apiMonth28[dayNumber];
+  } else {
+    dateToday.innerHTML =
+      `${dateToday.innerHTML}` +
+      " " +
+      "No existe este día en el calendario romano";
+  }
+};
+getToday();

@@ -4,47 +4,62 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/main.css" />
+
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css"
+      integrity="sha256-gsmEoJAws/Kd3CjuOQzLie5Q3yshhvmo7YNtBG7aaEY="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./css/main.css" />
     <title>Document</title>
   </head>
   <body>
     <main>
-      <h1 class="title">Las fechas según el calendario romano</h1>
+      <h1 class="title">el calendario romano</h1>
+      <h4 class="subTitle">
+        Introduce el día y el mes para ver la fecha en latín
+      </h4>
       <div class="main">
-        <img src="./images/knight-151088_1280.png" alt="" class="main__img" />
+        <img src="./images/column-576066_1280.png" alt="" class="main__img" />
         <form action="" class="js-Button main__form">
-          <label for="day">Día</label>
+          <label class="main__form--label" for="day">Día</label>
           <input
             type="text"
             id="day"
             class="js-inputDay main__form--input"
-            required
+            placeholder="Ej: 15"
           />
-          <label for="month">Mes</label>
+          <label class="main__form--label" for="month">Mes</label>
           <input
             type="text"
             id="month"
             class="js-inputMonth main__form--input"
-            required
+            placeholder="Ej: marzo"
           />
           <input
             type="submit"
             value="Convertir"
             class="js-Button main__form--btn"
           />
-          <p class="js-text main__form--text"></p>
         </form>
-        <img
-          src="./images/man-156549_1280.png"
-          alt=""
-          class="main__img consul"
-        />
+        <img src="./images/column-576066_1280.png" alt="" class="main__img" />
       </div>
+      <div class="main__form--text">
+        <p class="js-text dateText"></p>
+        <button class="js-btnReset main__form--btn">Nueva busqueda</button>
+        <aside class="js-dateToday main__form--today">La fecha de hoy:</aside>
+      </div>
+      <a
+        href="https://github.com/PatriciaPoveda/Calendario-romano"
+        target="_blank"
+        ><i class="fa fa-github" aria-hidden="true"></i
+      ></a>
     </main>
     <script src="./js/main.js"></script>
   </body>
