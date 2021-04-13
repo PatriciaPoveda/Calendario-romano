@@ -101,9 +101,9 @@ main {
 .dateText {
   height: 40px;
 }
+
 .fa {
   font-size: 30px;
-  position: fixed;
-  bottom: 10px;
-  right: 10px;
+  padding-left: 10px;
+  padding-bottom: 10px;
 }
